@@ -15,13 +15,15 @@ class SC_Controller extends CI_Controller {
 
     # Builds a standard page
     # This function should only be available to this class and its children
-    protected function build ($page, $param = NULL) {
+    protected function build ($page = NULL, $param = NULL) {
 
-    $this->load->view ('struct/start');
+      $this->load->view ('struct/Sidebar_s');
 
-    $this->load->view ($page, $param);
+    if ($page != NULL) {
+        $this->load->view ($page, $param);
+    }
 
-    $this->load->view ('struct/end');
+      $this->load->view ('struct/Sidebar_e');
 
     }
 
@@ -32,7 +34,7 @@ class SC_Controller extends CI_Controller {
 		if ($this->session->userdata ('user_id') != NULL) {
 
             # if the user is on the login/register pages
-            if ($this->router->fetch_class () == 'users') {
+            if ($this->router->class == 'processes' && $this->router->method != 'logout') {
     			redirect ("home");
             }
 
@@ -40,8 +42,8 @@ class SC_Controller extends CI_Controller {
     } else {
 
         # if the user is not on the login/register pages
-        if ($this->router->fetch_class () != 'users') {
-            redirect ("users/login");
+        if ($this->router->class != 'processes') {
+            redirect ("login");
         }
     }
 

@@ -1,0 +1,62 @@
+#app-content
+    padding: 3.55em 0.75em 0.75em
+    
+#app-header
+    background-color: $headerColor
+    color: $white
+    left: 0
+    padding: 2.5em
+    position: fixed
+    right: 0
+    top: 0
+    z-index: 1001
+    
+    .fa
+        font-size: 1.5em
+       
+#app-sidebar
+    display: block
+    height: 100%
+    width: 0
+    position: fixed
+    top: 0
+    left: 0
+    background-color: $sidebarColor
+    border-bottom: 1px solid $sidebarColor
+    padding-top: 3.5em
+    width: 15em
+    z-index: 1001
+    
+    #app-sidebar-header
+        display: flex
+        padding: 0.75em
+        
+        .fa
+            font-size: 1em
+                
+            
+    #app-options
+        
+        li
+            border-top: 1px solid alphaWhite(0.25)
+        
+        a
+            text-decoration: none
+            font-size: 1em
+            color: $white
+            display: block
+            transition: 0.3s
+            vertical-align: middle
+            align: left
+            
+            &:hover
+                color: $linkColor
+                opacity: 0.5
+            &:active
+                color: $activeLink 
+            
+            i
+                font-size: 1.5em
+                margin: 0.1em 0.25em 0 0
+                text-align: center
+                width: 1.75em                

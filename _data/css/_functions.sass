@@ -1,0 +1,41 @@
+=profile-border($e) 
+    -webkit-border-radius: $e
+    -moz-border-radius: $e
+    border-radius: $e
+
+@function alphaBlack($alpha)
+    @return rgba(0, 0, 0, $alpha)
+
+@function alphaWhite($alpha)
+    @return rgba(255, 255, 255, $alpha)
+
+=appearance($e)
+    -webkit-appearance: #{$e}
+    -moz-appearance: #{$e}
+    -ms-appearance: #{$e}
+    appearance: #{$e}
+
+=box-sizing($e)
+    -webkit-box-sizing: #{$e}
+    -moz-box-sizing: #{$e}
+    -ms-box-sizing: #{$e}
+    box-sizing: #{$e}
+    
+=box-shadow($x, $y, $d, $c)
+    -webkit-box-shadow: #{$x} #{$y} #{$d} #{$c}
+    -moz-box-shadow: #{$x} #{$y} #{$d} #{$c}
+    -ms-box-shadow: #{$x} #{$y} #{$d} #{$c}
+    box-shadow: #{$x} #{$y} #{$d} #{$c}
+    
+=transition($e)
+    $transition: false
+    @each $i in $e
+        @if not $transition
+            $transition: #{$i} .5s ease-in-out
+        @else
+            $transition: $transition, #{$i} .5s ease-in-out
+
+    -webkit-transition: #{$transition}
+    -moz-transition: #{$transition}
+    -ms-transition: #{$transition}
+    transition: #{$transition}

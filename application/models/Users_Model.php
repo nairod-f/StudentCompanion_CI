@@ -9,7 +9,8 @@ class Users_Model extends CI_Model {
         $data = array (
             'user_full_name'    => $full_name,
             'user_email'        => $email,
-            'user_password'     => password_hash ($password, CRYPT_BLOWFISH)
+            'user_password'     => password_hash ($password, CRYPT_BLOWFISH),
+            'roles_role_id'     => 2
         );
 
         $this->db->insert ('tbl_users', $data);
@@ -80,5 +81,5 @@ class Users_Model extends CI_Model {
         return $result->row_array ();
 
     }
-
+    
 }
