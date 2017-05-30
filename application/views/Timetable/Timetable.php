@@ -30,5 +30,16 @@
                      <button type="button" class="delete">Delete</button>
                 </form>
             </li>
+
+<?php
+        #Setting up table 2squares2 fields etc ---- weekdays
+            for ($d = 0; $d < 5; $d++):
+                for ($t = 0; $t < 13; $t++):
+?>
+            <li>hello</li>
+<?php
+                endfor;
+            endfor;
+?>
         </ul>
     </div>

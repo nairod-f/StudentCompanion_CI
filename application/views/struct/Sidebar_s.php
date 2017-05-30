@@ -20,7 +20,7 @@
         <aside id="app-sidebar">
 
             <nav id="app-options">
-                <a href="<?=site_url('Editprofile')?>" id="edit-profile">
+                <a href="<?=site_url('profile')?>" id="edit-profile">
                     <img class="image-frame" src="images/Lotus-inc-01.png" alt="">
                     <div class="overlay">
                         <hr>
@@ -64,7 +64,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="logout" id="user-logout" href= "<?=base_url('logout')?>">
+                        <a class="logout" id="user-logout" href= "<?=site_url('logout')?>">
                             <i class="fa fa-sign-out"></i>
                             Log out
                         </a>

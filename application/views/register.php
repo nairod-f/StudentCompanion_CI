@@ -16,7 +16,7 @@
 
     <body id="register-page">
 
-                <form id="register" action="<?=site_url('register/submit')?>" method="post">
+        <?=form_open($formdata['action'], $formdata['attributes']); ?>
             <h3> Register with<a></h3>
             </div>
 
@@ -29,22 +29,15 @@
 
         </div>
 
-
+<?php
+    foreach ($form as $value):
+?>
             <div class="input-spaces">
-                <input type="text" id="input-name" placeholder="name" name="input-full-name">
+                <?=form_input($value);?>
             </div>
-
-            <div class="input-spaces">
-                <input type="email" id="input-email" placeholder="me@example.com" name="input-email">
-            </div>
-
-            <div class="input-spaces">
-                <input type="password" id="input-password" placeholder="enter a password" name="input-password">
-            </div>
-
-            <div class="input-spaces">
-                <input type="password" id="input-confirm-password" placeholder="Retype password" name="input-conf-password">
-            </div>
+<?php
+    endforeach;
+?>
 
 
             <div class="flex-box">
@@ -53,6 +46,6 @@
             </div>
 
 
-        </form>
+        <?=form_close();?>
     </body>
 </html>

@@ -15,24 +15,40 @@ class Processes extends SC_Controller {
 		$this->load->helper ('form');
 
 		# the page info goes into an array
-		$data = array (
+        $data = array (
+            'formdata'  => array (
+                'action'        => 'register/submit',
+                'attributes'    => array (
+                    'id'            => 'register'
+                )
+            ),
 			'form'		=> array (
 				'full_name'		=> array (
 					'type'			=> 'text',
 					'name'			=> 'input-full-name',
-					'placeholder'	=> 'Herman Borg Bonaci',
+					'placeholder'	=> 'John Borg',
+                    'id'            => 'input-name',
 					'required'		=> TRUE
 				),
 				'email'			=> array (
 					'type'			=> 'email',
 					'name'			=> 'input-email',
 					'placeholder'	=> 'me@example.com',
+                    'id'            => 'input-email',
 					'required'		=> TRUE
 				),
 				'password'		=> array (
 					'type'			=> 'password',
 					'name'			=> 'input-password',
+                    'id'            => 'input-password,',
 					'placeholder'	=> 'password',
+					'required'		=> TRUE
+				),
+                'conf-password'	=> array (
+					'type'			=> 'password',
+					'name'			=> 'input-conf-password',
+                    'id'            => 'input-conf-password,',
+					'placeholder'	=> 'retype password',
 					'required'		=> TRUE
 				)
 			)
@@ -86,11 +102,11 @@ class Processes extends SC_Controller {
 		$email 		= $this->input->post ('input-email');
 		$password 	= $this->input->post ('input-password');
 
-		if ($this->users_model->register ($full_name, $email, $password)) {
-			echo "The user was registered.";
-		} else {
+		if (!$this->users_model->register ($full_name, $email, $password)) {
 			echo "The user could not be registered.";
 		}
+
+        redirect('login');
 
 	}
 
