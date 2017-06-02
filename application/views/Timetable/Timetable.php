@@ -33,10 +33,22 @@
 
 <?php
         #Setting up table 2squares2 fields etc ---- weekdays
-            for ($d = 0; $d < 5; $d++):
-                for ($t = 0; $t < 13; $t++):
+            for ($t = 0; $t < 13; $t++):
+                for ($d = 0; $d < 5; $d++):
+
+                    $hidden = array (
+                        'day'   => $d,
+                        'time'  => $t
+                    );
+
 ?>
-            <li>hello</li>
+            <li>
+                <?=form_open('timetable/edit_timeslot', NULL, $hidden);?>
+                    <?=form_input($form['lecture'])?>
+                    <?=form_input($form['location'])?>
+                    <?=form_submit('Send')?>
+                <?=form_close();?>
+            </li>
 <?php
                 endfor;
             endfor;

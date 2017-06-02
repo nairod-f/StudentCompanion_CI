@@ -5,8 +5,8 @@ class Profile extends SC_Controller {
 
 	public function index()
 	{
-        
-
 		$this->build('EditProfile/Editprofile',$data);
 	}
+
+    public function update_users()
 }
