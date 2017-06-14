@@ -49,7 +49,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-
 $route['register'] = 'processes/register';
 #this will only work till the registration
 $route['register/(:any)'] = 'processes/register/$1';
@@ -61,6 +60,8 @@ $route['login/(:any)'] = 'processes/login/$1';
 
 $route['logout'] = 'processes/logout';
 #this will only work till the registration
+
+$route['update'] = 'Profile/update_users';
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';

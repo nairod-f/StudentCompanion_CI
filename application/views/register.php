@@ -30,10 +30,10 @@
         </div>
 
 <?php
-    foreach ($form as $value):
+    foreach ($form as $field):
 ?>
             <div class="input-spaces">
-                <?=form_input($value);?>
+                <?=form_input($field);?>
             </div>
 <?php
     endforeach;

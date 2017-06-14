@@ -1,31 +1,24 @@
 <main id="edit-profile-page">
 
-        <form id="edit-section" action="" method="post">
+        <?=form_open($formdata['action'], $formdata['attributes']); ?>
+
             <h3> Edit Profile</h3>
-            <span><h1>person<h1></span>
-            </div>
+        
+        <?php
+            foreach ($form as $value):
+        ?>
+                    <div class="input-spaces">
+                        <?=form_input($value);?>
+                    </div>
+        <?php
+            endforeach;
+        ?>
+                            <div class="flex-box">
+                                <div class="flex-space"></div>
+                                <button type="submit">update</button>
+                            </div>
 
-        </div>
-
-            <div class="edit-spaces">
-                <input type="text" id="input-name" placeholder="name" value="">
-            </div>
-
-            <div class="edit-spaces">
-                <input type="text" id="input-surname" placeholder="surname" value="">
-            </div>
-
-            <div class="edit-spaces">
-                <input type="email" id="input-email" placeholder="me@example.com">
-            </div>
-
-            <div class="edit-spaces">
-                <input type="password" id="input-password" placeholder="enter a password" value="">
-            </div>
-
-            <div class="edit-spaces">
-                <input type="password" id="input-confirm-password" placeholder="Retype password" value="">
-            </div>
+                        <?=form_close();?>
 
             <div class="radio-button">
                 <h2>Gender:</h2>
