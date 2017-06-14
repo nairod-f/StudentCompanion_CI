@@ -83,7 +83,7 @@ class Users_Model extends CI_Model {
     }
     function update_users($id, $full_name = NULL, $email = NULL)
     {
-        //was filling array with $id meaning that i was putting one element into an array for nothing.
+        //was filling array with $id meaning that i was putting one element into an array for nothing
         $update = array();
 
         if ($full_name != NULL ) $update['user_full_name'] = $full_name;

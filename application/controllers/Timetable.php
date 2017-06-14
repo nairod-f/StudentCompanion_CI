@@ -13,6 +13,11 @@ class Timetable extends SC_Controller {
 
 	public function index()
 	{
+        $id = $this->session->userdata('user_id');
+        $user = $this->timetable_model->get_timedata($id);
+
+        //var_dump($user);
+
         $data = array (
             'formdata'  => array (
                 'action'        => 'add_lecture',
@@ -23,6 +28,7 @@ class Timetable extends SC_Controller {
             'form'		=> array (
                 'lecture'		=> array (
                     'type'			=> 'text',
+                    'value'         => $user['lecture_name'],
                     'name'			=> 'input-lecture',
                     'placeholder'	=> 'Eg. English',
                     'id'            => 'input-lecture',
@@ -30,6 +36,7 @@ class Timetable extends SC_Controller {
                 ),
                 'location'			=> array (
                     'type'			=> 'text',
+                    'value'         => $user['lecture_location'],
                     'name'			=> 'input-location',
                     'placeholder'	=> 'Eg. Resource room',
                     'id'            => 'input-location',

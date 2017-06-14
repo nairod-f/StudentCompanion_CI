@@ -19,6 +19,19 @@ class Timetable_Model extends CI_Model {
         $id = $this->db->insert_id ();
 
         return ($id > 0) ? $id : FALSE;
+    }
+    public function get_timedata ($id) {
+
+        $this->db->select ('lecture_name, lecture_location')
+                    ->where ('timetable_id', $id);
+
+            $result = $this->db->get ('tbl_sessions');
+
+            if ($result->num_rows () != 1)
+                return FALSE;
+
+            # Give the controller all the data as an array
+            return $result->row_array ();
 
     }
 
