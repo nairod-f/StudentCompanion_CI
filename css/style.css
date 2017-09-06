@@ -17,7 +17,7 @@ a {
 }
 
 body {
-    min-width: 800px;
+    min-width: 800pxs;
     background-color: #DFDCE3;
 }
 
@@ -92,7 +92,7 @@ ul, ol {
 }
 
 #app-header {
-    background-color: #4ABDAC;
+    background-color: #FF8C00;
     color: #fff;
     left: 0;
     padding: 2.5em;
@@ -113,8 +113,8 @@ ul, ol {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #4ABDAC;
-    border-bottom: 1px solid #4ABDAC;
+    background-color: #FF8C00;
+    border-bottom: 1px solid #FF8C00;
     padding-top: 3.5em;
     width: 15em;
     z-index: 1001;
@@ -340,8 +340,9 @@ button:hover {
 .timetable li {
     float: left;
     width: 20%;
-    height: 2em;
+    height: 4em;
     border: 1px solid black;
+    position: relative;
 }
 
 .timetable li.invisible {
@@ -352,15 +353,28 @@ button:hover {
     text-align: center;
 }
 
-.timetable li form {
+.timetable li:hover form {
     display: block;
-    padding: 0.5em;
-    position: absolute;
+}
+
+.timetable li form {
+    display: none;
     width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 
 .timetable li form.active {
     display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 
 .timetable li form input {
@@ -383,8 +397,14 @@ button:hover {
 
 .times li {
     display: block;
-    height: 2em;
-    line-height: 2em;
+    height: 4em;
+    line-height: 4.5em;
+}
+
+#edit-timetable-page {
+    width: 25em;
+    padding: 25em;
+    margin-left: 10em;
 }
 
 #inbox-msgs {

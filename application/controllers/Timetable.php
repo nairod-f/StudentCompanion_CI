@@ -15,10 +15,10 @@ class Timetable extends SC_Controller {
 	{
         $id = $this->session->userdata('user_id');
         $user = $this->timetable_model->get_timedata($id);
-
-        //var_dump($user);
+        $sessions = $this->timetable_model->get_sessions($id);
 
         $data = array (
+            'sessions'  => $sessions,
             'formdata'  => array (
                 'action'        => 'add_lecture',
                 'attributes'    => array (
@@ -28,7 +28,6 @@ class Timetable extends SC_Controller {
             'form'		=> array (
                 'lecture'		=> array (
                     'type'			=> 'text',
-                    'value'         => $user['lecture_name'],
                     'name'			=> 'input-lecture',
                     'placeholder'	=> 'Eg. English',
                     'id'            => 'input-lecture',
@@ -36,7 +35,6 @@ class Timetable extends SC_Controller {
                 ),
                 'location'			=> array (
                     'type'			=> 'text',
-                    'value'         => $user['lecture_location'],
                     'name'			=> 'input-location',
                     'placeholder'	=> 'Eg. Resource room',
                     'id'            => 'input-location',
@@ -47,10 +45,60 @@ class Timetable extends SC_Controller {
         $this->build('Timetable/Timetable', $data);
 
 	}
+    public function add($d,$t){
 
+        $data = array (
+            'form'		=> array (
+                'hidden'        => array (
+                    'day'       => $d,
+                    'time'      => $t
+                ),
+                'lecture'		=> array (
+                    'type'			=> 'text',
+                    'name'			=> 'input-lecture',
+                    'placeholder'	=> 'Eg. English',
+                    'id'            => 'input-lecture',
+
+                ),
+                'location'			=> array (
+                    'type'			=> 'text',
+                    'name'			=> 'input-location',
+                    'placeholder'	=> 'Eg. Resource room',
+                    'id'            => 'input-location',
+                    )
+                )
+            );
+
+        $this->build('Timetable/Timetable_edit', $data);
+    }
+
+    public function edit($id){
+
+        $data = array (
+            'form'		=> array (
+                'hidden'        => array (
+                    'session_id'       => $id
+                ),
+                'lecture'		=> array (
+                    'type'			=> 'text',
+                    'name'			=> 'input-lecture',
+                    'placeholder'	=> 'Eg. English',
+                    'id'            => 'input-lecture',
+
+                ),
+                'location'			=> array (
+                    'type'			=> 'text',
+                    'name'			=> 'input-location',
+                    'placeholder'	=> 'Eg. Resource room',
+                    'id'            => 'input-location',
+                    )
+                )
+            );
+
+        $this->build('Timetable/Timetable_edit', $data);
+    }
     public function edit_timeslot(){
 
-        var_dump($this->input->post());
 
         # load the form validator
         $this->load->library ('form_validation');
@@ -80,15 +128,23 @@ class Timetable extends SC_Controller {
 
         $day 	      = $this->input->post ('day');
         $time	      = $this->input->post ('time');
+        $session_id    = $this->input->post('session_id');
         $lecture 	= $this->input->post ('input-lecture');
         $location	= $this->input->post ('input-location');
 
+if($session_id == NULL){
         $session_id= $this->timetable_model->add_data ($time, $day, $lecture, $location);
+}else{
+    $session_id= $this->timetable_model->update_timetable($session_id, $lecture, $location);
 
+}
         if (!$session_id) {
             echo "This lecture could not be inputted.";
             return;
         }
+
+        $this->timetable_model->link_session($this->session->userdata('user_id'), $session_id);
+
 
         redirect('timetable');
 

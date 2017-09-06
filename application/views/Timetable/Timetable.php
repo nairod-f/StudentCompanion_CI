@@ -23,16 +23,11 @@
             <li class="weekdays">Thursday</li>
             <li class="weekdays">Friday</li>
 
-            <li class="template invisible">
-                <form>
-                    <input type="text" class="add-subject">
 
-                    <button type="submit">Add</button>
-                     <button type="button" class="delete">Delete</button>
-                </form>
-            </li>
 
 <?php
+            $row = $sessions->first_row('array');
+            //var_dump ($row); die;
         #Setting up table 2squares2 fields etc ---- weekdays
             for ($t = 0; $t < 13; $t++):
                 for ($d = 0; $d < 5; $d++):
@@ -42,13 +37,26 @@
                         'time'  => $t
                     );
 
+            $item = NULL;
+            if($d == $row['session_day'] && $t == $row['session_time']){
+                $item = $row;
+                $row = $sessions->next_row('array');
+            }
 ?>
             <li>
-                <?=form_open('timetable/edit_timeslot', NULL, $hidden);?>
-                    <?=form_input($form['lecture'])?>
-                    <?=form_input($form['location'])?>
-                    <?=form_submit('Send')?>
-                <?=form_close();?>
+<?php
+    if ($item !=  NULL):
+?>
+        <a href="<?=site_url("timetable/edit/{$item['id']}")?>">
+            <?=$item['lecture_name']?><br><?=$item['lecture_location']?>
+        </a>
+<?php
+    else:
+?>
+        <a href="<?=site_url("timetable/add/$d/$t")?>">+</a>
+<?php
+    endif;
+?>
             </li>
 <?php
                 endfor;

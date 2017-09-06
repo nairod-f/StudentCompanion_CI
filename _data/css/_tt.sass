@@ -12,8 +12,9 @@
     li
         float: left
         width: percentage(1/5)
-        height: 2em
+        height: 4em
         border: 1px solid black
+        position: relative
 
         &.invisible
             display: block
@@ -21,23 +22,28 @@
             .weekdays
                 text-align: center
 
+        &:hover
+            form
+                display: block
+
+
         form
-            display: block
+            display: none
             width: 100%
             height: 100%
             position: absolute
-        	top: 0
-        	left: 0
-        	z-index: 10
+            top: 0
+            left: 0
+            z-index: 10
 
             &.active
                 display: block
                 width: 100%
-            	height: 100%
-            	position: absolute
-            	top: 0
-            	left: 0
-            	z-index: 10
+                height: 100%
+                position: absolute
+                top: 0
+                left: 0
+                z-index: 10
 
             input
                 display: block
@@ -55,5 +61,10 @@
 
     li
         display: block
-        height: 2em
-        line-height: 2em
+        height: 4em
+        line-height: 4.5em
+
+#edit-timetable-page
+    width: 25em
+    padding: 25em
+    margin-left: 10em
