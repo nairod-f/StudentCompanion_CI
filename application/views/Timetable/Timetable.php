@@ -26,8 +26,10 @@
 
 
 <?php
+//var_dump ($sessions->result()); die;
+
             $row = $sessions->first_row('array');
-            //var_dump ($row); die;
+
         #Setting up table 2squares2 fields etc ---- weekdays
             for ($t = 0; $t < 13; $t++):
                 for ($d = 0; $d < 5; $d++):
@@ -54,6 +56,7 @@
     else:
 ?>
         <a href="<?=site_url("timetable/add/$d/$t")?>">+</a>
+
 <?php
     endif;
 ?>

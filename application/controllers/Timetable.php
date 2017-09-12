@@ -133,7 +133,9 @@ class Timetable extends SC_Controller {
         $location	= $this->input->post ('input-location');
 
 if($session_id == NULL){
-        $session_id= $this->timetable_model->add_data ($time, $day, $lecture, $location);
+        $session_id= $this->timetable_model->add_data($time, $day, $lecture, $location);
+        $this->timetable_model->link_session($this->session->userdata('user_id'), $session_id);
+
 }else{
     $session_id= $this->timetable_model->update_timetable($session_id, $lecture, $location);
 
@@ -142,8 +144,6 @@ if($session_id == NULL){
             echo "This lecture could not be inputted.";
             return;
         }
-
-        $this->timetable_model->link_session($this->session->userdata('user_id'), $session_id);
 
 
         redirect('timetable');
