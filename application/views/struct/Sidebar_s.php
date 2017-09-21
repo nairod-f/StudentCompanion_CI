@@ -38,14 +38,9 @@
                             News Feed
                         </a>
                     </li>
+
                     <li>
-                        <a href="<?=site_url('Inbox')?>" class="sidebar-links">
-                            <i class="fa fa-envelope-o"></i>
-                            Inbox
-                        </a>
-                    </li>
-                    <li>
-                        <a href="notes" class="sidebar-links">
+                        <a href="<?=site_url('Notes')?>" class="sidebar-links">
                             <i class="fa fa-file-text-o"></i>
                             Notes
                         </a>
