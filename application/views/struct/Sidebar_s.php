@@ -32,12 +32,6 @@
                 </a>
 
                 <ul>
-                    <li>
-                        <a href="<?=site_url('/')?>" class="sidebar-links">
-                            <i class="fa fa-newspaper-o"></i>
-                            News Feed
-                        </a>
-                    </li>
 
                     <li>
                         <a href="<?=site_url('Notes')?>" class="sidebar-links">
@@ -52,6 +46,14 @@
                             timetable
                         </a>
                     </li>
+                    <li>
+                       <a href="<?=site_url('Todo')?>" class="sidebar-links">
+                           <i class="fa fa-clock-o"></i>
+                           To-Do List
+                       </a>
+                   </li>
+
+
                     <li>
                         <a class="logout" id="user-logout" href= "<?=site_url('logout')?>">
                             <i class="fa fa-sign-out"></i>

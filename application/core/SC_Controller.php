@@ -39,7 +39,7 @@ class SC_Controller extends CI_Controller {
 
             # if the user is on the login/register pages
             if ($this->router->class == 'processes' && $this->router->method != 'logout') {
-    			redirect ("home");
+    			redirect ("timetable");
             }
 
         # if the user is logged out

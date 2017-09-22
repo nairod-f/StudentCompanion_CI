@@ -63,7 +63,6 @@ $route['logout'] = 'processes/logout';
 
 $route['update'] = 'Profile/update_users';
 
-
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'timetable';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
